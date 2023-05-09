@@ -40,7 +40,7 @@ if ($_POST["submit"] ?? false) {
         $msg = "Invalid mobile number";
     } else if (isMobileNumberValid($sData["student_whatsapp_number"])) {
         $msg = "Invalid whatsapp number";
-    } else if(isAadharNumberValid($sData["student_aadhar_number"])){
+    } else if (isAadharNumberValid($sData["student_aadhar_number"])) {
         $msg = "Invalid aadhar number";
     } else if (!filter_var($sData["email_id"], FILTER_VALIDATE_EMAIL)) {
         $msg = "Invalid email address";
@@ -49,8 +49,25 @@ if ($_POST["submit"] ?? false) {
     }
 
     // If flag true then insert data in database
-    if($insertDataFlag){
-        $msg1 = "DATA INSERTED";
+    if ($insertDataFlag) {
+        require_once("./database.config.php");
+        $submitDatetime = date("YmdHis");
+        try {
+            $conn = databaseConnector();
+            $sqlQuery = "INSERT INTO students(submit_datetime, student_name, father_name, mother_name, student_aadhar_no, father_mobile_no, permanent_address, citizen, gender, category_of_admission, parents_annual_income, 10th_merit_rank, student_whatsapp_no, birth_date, religion) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $stmt = mysqli_stmt_init($conn);
+            if (mysqli_stmt_prepare($stmt, $sqlQuery)) {
+                mysqli_stmt_bind_param($stmt, "ssssssssssdisss", $submitDatetime, $sData["student_name"], $sData["father_name"], $sData["mother_name"], $sData["student_aadhar_number"], $sData["father_mobile_number"], $sData["permanent_address"], $sData["citizen"], $sData["gender"], $sData["category_of_admission"], $sData["parents_annual_income"], $sData["tenth_merit_rank"], $sData["student_whatsapp_number"], $sData["birth_date"], $sData["religion"]);
+                mysqli_stmt_execute($stmt);
+                $msg1 = "Data sumited successfully simply close this tab";
+            } else {
+                $msg = "Something went wrong";
+            }
+            mysqli_stmt_close($stmt);
+            databaseConnectorClose($conn);
+        } catch (Exception $e) {
+            $msg = "Please try again";
+        }
     }
 
     $msg = base64_encode($msg);
@@ -64,26 +81,26 @@ if ($_POST["submit"] ?? false) {
 function isEmpty($a): bool
 {
     if (strlen($a) > 0) {
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 }
 
 function isMobileNumberValid($a): bool
 {
     if (strlen($a) == 10) {
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 }
 
 function isAadharNumberValid($a): bool
 {
     if (strlen($a) == 12) {
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 }
