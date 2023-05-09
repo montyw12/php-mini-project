@@ -4,7 +4,6 @@ if ($_POST["edit"] ?? false) {
     $r_id = $_POST["edit"];
 
     require_once("./database.config.php");
-    $submitDatetime = date("YmdHis");
     try {
         $conn = databaseConnector();
         $sqlQuery = "SELECT * FROM students WHERE r_id = ?";
@@ -22,7 +21,7 @@ if ($_POST["edit"] ?? false) {
 
         $msg = base64_encode($msg);
         $a = base64_encode(json_encode($data));
-        header("location: ./../edit.php?a=" . $a . "&msg=" . $msg);
+        header("location: ./../edit.php?a=" . $a . "&msg=" . $msg . "&msg1=" . $msg1);
     } catch (Exception $e) {
         $msg = "Please try again";
     }

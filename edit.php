@@ -2,6 +2,7 @@
 if ($_GET["a"] ?? false) {
     $a = json_decode(base64_decode($_GET["a"]));
     $msg = base64_decode($_GET["msg"]);
+    $msg1 = base64_decode($_GET["msg1"]);
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ if ($_GET["a"] ?? false) {
             <?php endif; ?>
             <?php if($_GET["msg1"] ?? false) : ?>
                 <div class="alert alert-success alert-dismissible show mt-3" role="alert">
-                    <?= $msg1 ?? "" ?>
+                    <?= $msg1 . "&nbsp;&nbsp;&nbsp;Go back to <a href=\"./read.php\">READ</a> section" ?? "" ?>
                     <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
                 </div>
             <?php endif; ?>
@@ -128,6 +129,7 @@ if ($_GET["a"] ?? false) {
                         </select>
                     </div>
                     <div class="my-3">
+                        <input type="hidden" name="r_id" value="<?= $a->r_id ?>">
                         <button class="btn btn-warning mt-1" name="update" value="<?= $a->r_id ?>">Update</button>
                         <button class="btn btn-danger mt-1 mx-5" name="delete" value="<?= $a->r_id ?>">Delete</button>
                     </div>
