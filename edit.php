@@ -2,7 +2,6 @@
 if ($_GET["a"] ?? false) {
     $a = json_decode(base64_decode($_GET["a"]));
     $msg = base64_decode($_GET["msg"]);
-    $msg1 = base64_decode($_GET["msg1"]);
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +35,7 @@ if ($_GET["a"] ?? false) {
                     <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
                 </div>
             <?php endif; ?>
-            <form method="post" action="./php/formfillup.fun.php">
+            <form method="post" action="./php/edit.fun.php">
                 <div class="col-12">
                     <div class="my-3">
                         <label class="form-lable">Student name</label>
@@ -129,7 +128,8 @@ if ($_GET["a"] ?? false) {
                         </select>
                     </div>
                     <div class="my-3">
-                        <button class="btn btn-primary mt-1" name="submit" value="submit">Submit</button>
+                        <button class="btn btn-warning mt-1" name="update" value="<?= $a->r_id ?>">Update</button>
+                        <button class="btn btn-danger mt-1 mx-5" name="delete" value="<?= $a->r_id ?>">Delete</button>
                     </div>
                 </div>
             </form>
