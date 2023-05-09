@@ -1,3 +1,8 @@
+<?php
+if($_GET["a"] ?? false){
+    $a = json_decode(base64_decode($_GET["a"]));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,15 +22,15 @@
 <body>
     <div class="container">
         <div class="row">
-            <form>
+            <form method="post" action="./php/formfillup.fun.php">
                 <div class="col-12">
                     <div class="my-3">
                         <label class="form-lable">Student name</label>
-                        <input class="form-control mt-1" type="text" name="student_name" placeholder="student name">
+                        <input class="form-control mt-1" type="text" name="student_name" placeholder="student name" value="<?= $a->student_name ?? "" ?>">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Father name</label>
-                        <input class="form-control mt-1" type="text" name="father_name" placeholder="father name">
+                        <input class="form-control mt-1" type="text" name="father_name" placeholder="father name" required>
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Mother name</label>
@@ -33,18 +38,20 @@
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Student aadhar number</label>
-                        <input class="form-control mt-1" type="number" name="student_aadhar_number"
-                            placeholder="student aadhar number">
+                        <input class="form-control mt-1" type="number" name="student_aadhar_number" placeholder="student aadhar number">
                     </div>
                     <div class="my-3">
-                        <label class="form-lable">Father mobile no</label>
-                        <input class="form-control mt-1" type="tel" name="father_mobile_no"
-                            placeholder="father mobile no">
+                        <label class="sr-only">Father mobile no</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">+91</div>
+                            </div>
+                            <input class="form-control" type="tel" name="father_mobile_no" placeholder="father mobile no">
+                        </div>
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Permanant address</label>
-                        <textarea class="form-control mt-1" name="permanant_address"
-                            placeholder="permanant address"></textarea>
+                        <textarea class="form-control mt-1" name="permanant_address" placeholder="permanant address"></textarea>
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Citizen</label>
@@ -73,13 +80,11 @@
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Parents annual income</label>
-                        <input class="form-control mt-1" type="number" name="parents_annual_income"
-                            placeholder="parents annual income">
+                        <input class="form-control mt-1" type="number" name="parents_annual_income" placeholder="parents annual income">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">10th Merit Rank</label>
-                        <input class="form-control mt-1" type="number" name="10th_merit_rank"
-                            placeholder="10th merit rank">
+                        <input class="form-control mt-1" type="number" name="10th_merit_rank" placeholder="10th merit rank">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Email Id</label>
@@ -87,8 +92,7 @@
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Student Whatsapp Number</label>
-                        <input class="form-control mt-1" type="tel" name="student_whatsapp_number"
-                            placeholder="student whatsapp number">
+                        <input class="form-control mt-1" type="tel" name="student_whatsapp_number" placeholder="student whatsapp number">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Birth Date</label>
