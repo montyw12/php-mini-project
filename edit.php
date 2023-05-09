@@ -1,4 +1,9 @@
-<?php
+<?php session_start();
+if ($_SESSION["flagForHome"] ?? false) {
+} else {
+    header("location: ./admin.php?msg=Attempting to access private data");
+    exit();
+}
 if ($_GET["a"] ?? false) {
     $a = json_decode(base64_decode($_GET["a"]));
     $msg = base64_decode($_GET["msg"]);
@@ -24,20 +29,21 @@ if ($_GET["a"] ?? false) {
 <body>
     <div class="container">
         <div class="row">
-            <?php if ($_GET["msg"] ?? false) : ?>
-                <div class="alert alert-danger alert-dismissible show mt-3" role="alert">
-                    <?= $msg ?? "" ?>
-                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
-                </div>
-            <?php endif; ?>
-            <?php if($_GET["msg1"] ?? false) : ?>
-                <div class="alert alert-success alert-dismissible show mt-3" role="alert">
-                    <?= $msg1 . "&nbsp;&nbsp;&nbsp;Go back to <a href=\"./read.php\">READ</a> section" ?? "" ?>
-                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
-                </div>
-            <?php endif; ?>
             <form method="post" action="./php/edit.fun.php">
                 <div class="col-12">
+                    <h1 align="center">ACPDC Student 1st Sem IT-CE</h1>
+                    <?php if ($_GET["msg"] ?? false) : ?>
+                        <div class="alert alert-danger alert-dismissible show mt-3" role="alert">
+                            <?= $msg ?? "" ?>
+                            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($_GET["msg1"] ?? false) : ?>
+                        <div class="alert alert-success alert-dismissible show mt-3" role="alert">
+                            <?= $msg1 . "&nbsp;&nbsp;&nbsp;Go back to <a href=\"./read.php\">READ</a> section" ?? "" ?>
+                            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
+                        </div>
+                    <?php endif; ?>
                     <div class="my-3">
                         <label class="form-lable">Student name</label>
                         <input class="form-control mt-1" type="text" name="student_name" placeholder="student name" value="<?= $a->student_name ?? "" ?>">

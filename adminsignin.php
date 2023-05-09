@@ -25,7 +25,7 @@
                         <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>
                 <?php endif; ?>
-                <form action="./php/admin.fun.php" method="post">
+                <form action="./php/adminsignin.fun.php" method="post">
                     <label class="form-label mt-3">Username:</label>
                     <input class="form-control mb-3" type="text" placeholder="type username" name="username" required>
                     <label class="form-label">Password:</label>
