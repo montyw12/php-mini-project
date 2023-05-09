@@ -28,7 +28,6 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>READ</title>
     <link rel="stylesheet" href="./R/bootstrap.css">
-    <link rel="stylesheet" href="./R/datatables.css">
     <link rel="stylesheet" href="./R/datatables.min.css">
     <style>
         * {
@@ -92,7 +91,6 @@ try {
     </div>
     <script src="./R/jquery-3.6.3.js"></script>
     <script src="./R/bootstrap.bundle.js"></script>
-    <script src="./R/datatables.js"></script>
     <script src="./R/datatables.min.js"></script>
     <script>
         let table = new DataTable('#myTable');
