@@ -18,8 +18,8 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-8">
-            <?php if ($_GET["msg"] ?? false) : ?>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <?php if ($_GET["msg"] ?? false) : ?>
                     <div class="alert alert-warning alert-dismissible show mt-3" role="alert">
                         <?= $_GET["msg"] ?>
                         <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="close"></button>
