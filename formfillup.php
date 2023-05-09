@@ -30,15 +30,15 @@ if($_GET["a"] ?? false){
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Father name</label>
-                        <input class="form-control mt-1" type="text" name="father_name" placeholder="father name" required>
+                        <input class="form-control mt-1" type="text" name="father_name" placeholder="father name" value="<?= $a->father_name ?? "" ?>" required>
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Mother name</label>
-                        <input class="form-control mt-1" type="text" name="mother_name" placeholder="mother name">
+                        <input class="form-control mt-1" type="text" name="mother_name" placeholder="mother name"value="<?= $a->mother_name ?? "" ?>">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Student aadhar number</label>
-                        <input class="form-control mt-1" type="number" name="student_aadhar_number" placeholder="student aadhar number">
+                        <input class="form-control mt-1" type="number" name="student_aadhar_number" placeholder="student aadhar number" value="<?= $a->student_aadhar_number ?? "" ?>">
                     </div>
                     <div class="my-3">
                         <label class="sr-only">Father mobile no</label>
@@ -46,12 +46,12 @@ if($_GET["a"] ?? false){
                             <div class="input-group-prepend">
                                 <div class="input-group-text">+91</div>
                             </div>
-                            <input class="form-control" type="tel" name="father_mobile_no" placeholder="father mobile no">
+                            <input class="form-control" type="tel" name="father_mobile_no" placeholder="father mobile no" value="<?= $a->father_mobile_no ?? "" ?>">
                         </div>
                     </div>
                     <div class="my-3">
-                        <label class="form-lable">Permanant address</label>
-                        <textarea class="form-control mt-1" name="permanant_address" placeholder="permanant address"></textarea>
+                        <label class="form-lable">Permanent address</label>
+                        <textarea class="form-control mt-1" name="permanent_address" placeholder="permanent address" ><?= $a->permanent_address ?? "" ?></textarea>
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Citizen</label>
@@ -80,23 +80,28 @@ if($_GET["a"] ?? false){
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Parents annual income</label>
-                        <input class="form-control mt-1" type="number" name="parents_annual_income" placeholder="parents annual income">
+                        <input class="form-control mt-1" type="number" name="parents_annual_income" placeholder="parents annual income"value="<?= $a->parents_annual_income ?? "" ?>">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">10th Merit Rank</label>
-                        <input class="form-control mt-1" type="number" name="10th_merit_rank" placeholder="10th merit rank">
+                        <input class="form-control mt-1" type="number" name="tenth_merit_rank" placeholder="10th merit rank"value="<?= $a->tenth_merit_rank ?? "" ?>">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Email Id</label>
-                        <input class="form-control mt-1" type="email" name="email_id" placeholder="email id">
+                        <input class="form-control mt-1" type="email" name="email_id" placeholder="email id"value="<?= $a->email_id ?? "" ?>">
                     </div>
                     <div class="my-3">
-                        <label class="form-lable">Student Whatsapp Number</label>
-                        <input class="form-control mt-1" type="tel" name="student_whatsapp_number" placeholder="student whatsapp number">
+                        <label class="sr-only">Student Whatsapp Number</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">+91</div>
+                            </div>
+                            <input class="form-control mt-1" type="tel" name="student_whatsapp_number" placeholder="student whatsapp number" value="<?= $a->student_whatsapp_number ?? "" ?>">
+                        </div>
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Birth Date</label>
-                        <input class="form-control mt-1" type="date" name="birth_date" placeholder="birth date">
+                        <input class="form-control mt-1" type="date" name="birth_date" placeholder="birth date"value="<?= $a->birth_date ?? "" ?>">
                     </div>
                     <div class="my-3">
                         <label class="form-lable">Religion</label>
