@@ -3,7 +3,7 @@
 if ($_GET["delete"] ?? false) {
     $r_id = $_GET["delete"];
     try {
-        require_once("./database.config.php");
+        require_once("./../php/database.config.php");
         $conn = databaseConnector();
         $sqlQuery = "DELETE FROM students WHERE r_id = ?";
         $stmt = mysqli_stmt_init($conn);

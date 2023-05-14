@@ -14,7 +14,7 @@ if ($_GET["update"] ?? false) {
     }
 
     try {
-        require_once("./database.config.php");
+        require_once("./../php/database.config.php");
         $conn = databaseConnector();
         $sqlQuery = "UPDATE students SET student_name = ?, father_name = ?, mother_name = ?, student_aadhar_number = ?, father_mobile_number = ?, permanent_address = ?, citizen = ?, gender = ?, category_of_admission = ?, parents_annual_income = ?, tenth_merit_rank = ?, student_whatsapp_number = ?, birth_date = ?, religion = ?, email_id = ? WHERE r_id = ?;";
         $stmt = mysqli_stmt_init($conn);

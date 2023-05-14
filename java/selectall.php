@@ -3,7 +3,7 @@
 if ($_GET["select"] ?? false) {
 
     try {
-        require_once("./database.config.php");
+        require_once("./../php/database.config.php");
         $conn = databaseConnector();
         $sqlQuery = "SELECT * FROM students;";
         $stmt = mysqli_stmt_init($conn);
@@ -11,7 +11,7 @@ if ($_GET["select"] ?? false) {
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             $data = mysqli_fetch_assoc($result);
-            $outputMsg = json_decode($data);
+            $outputMsg = json_encode($data);
         } else {
             $outputMsg = "Something went wrong";
         }
