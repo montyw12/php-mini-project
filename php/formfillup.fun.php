@@ -75,7 +75,7 @@ if ($_POST["submit"] ?? false) {
     $a = base64_encode(json_encode($sData));
     header("location: ./../formfillup.php?a=" . $a . "&msg=" . $msg . "&msg1=" . $msg1);
 } else {
-    echo "INVLID PAGE ACCESS";
+    echo "INVALID PAGE ACCESS";
 }
 
 function isEmpty($a): bool

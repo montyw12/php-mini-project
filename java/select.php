@@ -1,10 +1,10 @@
 <?php
 
-if ($_POST["edit"] ?? false) {
-    $r_id = $_POST["edit"];
+if ($_GET["select"] ?? false) {
+    $r_id = $_GET["select"];
 
-    require_once("./database.config.php");
     try {
+        require_once("./database.config.php");
         $conn = databaseConnector();
         $sqlQuery = "SELECT * FROM students WHERE r_id = ?";
         $stmt = mysqli_stmt_init($conn);
@@ -13,18 +13,16 @@ if ($_POST["edit"] ?? false) {
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             $data = mysqli_fetch_assoc($result);
+            $outputMsg = json_decode($data);
         } else {
-            $msg = "Something went wrong";
+            $outputMsg = "Something went wrong";
         }
         mysqli_stmt_close($stmt);
         databaseConnectorClose($conn);
-
-        $msg = base64_encode($msg);
-        $a = base64_encode(json_encode($data));
-        header("location: ./../edit.php?a=" . $a . "&msg=" . $msg . "&msg1=" . $msg1);
     } catch (Exception $e) {
-        $msg = "Please try again";
+        $outputMsg = "Please try again";
     }
+    echo $outputMsg;
 } else {
     echo "INVALID PAGE ACCESS";
 }

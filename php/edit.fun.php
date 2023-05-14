@@ -100,7 +100,7 @@ if($_POST["delete"] ?? false){
     $a = base64_encode(json_encode($sData));
     header("location: ./../edit.php?a=" . $a . "&msg=" . $msg . "&msg1=" . $msg1);
 } else {
-    echo "INVLID PAGE ACCESS";
+    echo "INVALID PAGE ACCESS";
 }
 
 function isEmpty($a): bool
